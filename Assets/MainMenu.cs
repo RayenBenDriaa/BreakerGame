@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    GameObject Settings,Menu;
+    void Start()
+    {
+        Settings = GameObject.Find("SeetingsMenu");
+        Menu = GameObject.Find("MainMenu");
+        Menu.SetActive(false);
+    }
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -12,11 +19,19 @@ public class MainMenu : MonoBehaviour
     }
     public void GoTosettingsMenu()
     {
+        
         SceneManager.LoadScene("SeetingsMenu");
+        Settings.SetActive(true);
+        Menu.SetActive(false);
+
+
     }
     public void GoToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        Settings.SetActive(false);
+        Menu.SetActive(true);
+
 
     }
     public void QuitGame()
