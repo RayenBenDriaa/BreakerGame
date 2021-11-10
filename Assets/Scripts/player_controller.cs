@@ -26,7 +26,7 @@ public class player_controller : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && this.grounded)
         {
-            this.rb.AddForce(Vector3.up *10f, ForceMode.Impulse);
+            this.rb.AddForce(Vector3.up *4f, ForceMode.Impulse);
 
         }
 
