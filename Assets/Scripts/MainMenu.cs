@@ -5,16 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    GameObject Settings,Menu;
+    GameObject Settings,Menu,DifficutlyEasy,DifficutlyHard;
+
     void Start()
     {
         Settings = GameObject.Find("SeetingsMenu");
         Menu = GameObject.Find("MainMenu");
+        DifficutlyEasy = GameObject.Find("Text easy");
+        DifficutlyHard = GameObject.Find("Text hard");
+        DifficutlyHard.SetActive(false);
+      
         Menu.SetActive(false);
     }
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Level2Scene");
 
     }
     public void GoTosettingsMenu()
@@ -38,6 +43,20 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void DiffucltyToEasy()
+    {
+        DifficutlyEasy.SetActive(true);
+        DifficutlyHard.SetActive(false);
+
+    }
+    public void DiffucltyToHard()
+    {
+        DifficutlyHard.SetActive(true);
+        DifficutlyEasy.SetActive(false);
+
+    }
 }
+
 
 
