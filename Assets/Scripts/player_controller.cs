@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class player_controller : MonoBehaviour
@@ -19,19 +20,39 @@ public class player_controller : MonoBehaviour
     private void FixedUpdate()
     {
         Grounded();
-        Boxe();
+        Jump();
         Move();
+        Boxe();
+        run();
     }
-    private void Boxe()
+    private void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && this.grounded)
         {
-            this.rb.AddForce(Vector3.up *4f, ForceMode.Impulse);
+            this.anim.SetBool("jump",false);
+
+            this.rb.AddForce(Vector3.up * 4f, ForceMode.Impulse);
 
         }
 
     }
 
+    IEnumerator waitforAnimation()
+    {
+        yield return new WaitForSeconds(1.7f);
+        this.anim.SetBool("boxe", true);
+    }
+    private void Boxe()
+    {
+        if (Input.GetMouseButtonDown(0) && this.grounded)
+        {
+            this.anim.SetBool("boxe",false);
+            StartCoroutine(waitforAnimation());
+           
+
+        }
+
+    }
     private void Grounded()
     {
         if (Physics.CheckSphere(this.transform.position + Vector3.down, 0.2f, layerMask))
@@ -44,7 +65,7 @@ public class player_controller : MonoBehaviour
             this.grounded = false;
 
         }
-        this.anim.SetBool("boxe", this.grounded);
+        this.anim.SetBool("jump", this.grounded);
     }
 
     private void Move()
@@ -57,6 +78,20 @@ public class player_controller : MonoBehaviour
         this.transform.position += (movement * 0.4f) * Time.deltaTime;
         this.anim.SetFloat("vertical", verticalAxis == 0 ? Mathf.Abs(horizontalAxis) : verticalAxis);
         this.anim.SetFloat("horizontal", horizontalAxis);
+
+    }
+    private void run()
+    {
+
+        float verticalAxis = Input.GetAxis("Vertical");
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && verticalAxis != 0)
+        {
+         
+          
+            this.anim.SetTrigger("run");
+        }
+   
 
     }
 }
