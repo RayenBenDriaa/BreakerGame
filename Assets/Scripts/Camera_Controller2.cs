@@ -25,7 +25,7 @@ public class Camera_Controller2 : MonoBehaviour
         Look();
         Debug.DrawRay(this.transform.position, this.transform.forward * 2, Color.red);
     }
-
+    //camera movement
     private void Look()
     {
         float mouseVertical = -Input.GetAxis("Mouse Y");

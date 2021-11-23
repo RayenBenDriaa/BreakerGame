@@ -34,10 +34,11 @@ public class player_controller : MonoBehaviour
         Boxe();
         run();
     }
+    // jumping when clicking space
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && this.grounded)
-        {
+        if ((Input.GetButtonDown("Jump") && this.grounded)
+        {//loading jump animation
             this.anim.SetBool("jump",false);
 
             this.rb.AddForce(Vector3.up * 4f, ForceMode.Impulse);
@@ -51,9 +52,10 @@ public class player_controller : MonoBehaviour
         yield return new WaitForSeconds(1.7f);
         this.anim.SetBool("boxe", true);
     }
+    //Attack function
     private void Boxe()
     {
-        if (Input.GetMouseButtonDown(0) && this.grounded)
+        if (Input.GetButtonDown("Fire1") && this.grounded)
         {
             this.anim.SetBool("boxe",false);
             StartCoroutine(waitforAnimation());
@@ -62,6 +64,7 @@ public class player_controller : MonoBehaviour
         }
 
     }
+    
     private void Grounded()
     {
         if (Physics.CheckSphere(this.transform.position + Vector3.down, 0.2f, layerMask))
@@ -76,7 +79,7 @@ public class player_controller : MonoBehaviour
         }
         this.anim.SetBool("jump", this.grounded);
     }
-
+    //movment function
     private void Move()
     {
         float verticalAxis = Input.GetAxis("Vertical");
@@ -89,12 +92,13 @@ public class player_controller : MonoBehaviour
         this.anim.SetFloat("horizontal", horizontalAxis);
 
     }
+    //when i press left shift he run
     private void run()
     {
 
         float verticalAxis = Input.GetAxis("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && verticalAxis != 0)
+        if (Input.GetButtonDown("Sprint") && verticalAxis != 0)
         {
          
           
