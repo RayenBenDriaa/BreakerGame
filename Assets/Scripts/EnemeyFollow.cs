@@ -16,7 +16,8 @@ public class EnemeyFollow : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        //Finds the postion of the target player ands sets it to Enemy as a destination
         enemy.SetDestination(Player.position);
         
     }
