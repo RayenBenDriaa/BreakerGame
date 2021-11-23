@@ -4778,6 +4778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 822522589}
   Player: {fileID: 1243652028}
+  anim: {fileID: 822522592}
 --- !u!195 &822522589
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4788,7 +4789,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 1
+  m_Speed: 0.5
   m_Acceleration: 0.2
   avoidancePriority: 50
   m_AngularSpeed: 100
@@ -4833,6 +4834,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &822522593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822522587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8775a7c04f040f54bb4b026e2a3a0769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &823122124
 PrefabInstance:
   m_ObjectHideFlags: 0

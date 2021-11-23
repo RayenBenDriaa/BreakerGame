@@ -84,7 +84,7 @@ public class player_controller : MonoBehaviour
 
         Vector3 movement = this.transform.forward * verticalAxis + this.transform.right * horizontalAxis;
         movement.Normalize();
-        this.transform.position += (movement * 0.4f) * Time.deltaTime;
+        this.transform.position += (movement * 0.7f) * Time.deltaTime;
         this.anim.SetFloat("vertical", verticalAxis == 0 ? Mathf.Abs(horizontalAxis) : verticalAxis);
         this.anim.SetFloat("horizontal", horizontalAxis);
 
