@@ -9,11 +9,20 @@ public class player_controller : MonoBehaviour
     private Rigidbody rb;
     public LayerMask layerMask;
     public bool grounded;
-
+    /*
+    void Awake()
+    {
+#if UNITY_EDITOR
+        QualitySettings.vSyncCount = 0;  // VSync must be disabled
+        Application.targetFrameRate = 45;
+#endif
+    }*/
     // Start is called before the first frame update
     void Start()
     {
         this.rb = GetComponent<Rigidbody>();
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 30;
     }
 
     // Update is called once per frame
