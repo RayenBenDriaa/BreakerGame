@@ -21,7 +21,7 @@ public class EnemeyFollow : MonoBehaviour
         //Finds the postion of the target player ands sets it to Enemy as a destination
         enemy.SetDestination(Player.position);
         
-       //if the distance bettwen the enemey and the player is closer than 1 meter 
+       //if the distance bettwen the enemey and the player is closer than 1 meters 
        if(enemy.remainingDistance < 1)
         {
             Debug.Log("we are close i can attack");

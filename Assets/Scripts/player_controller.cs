@@ -6,9 +6,11 @@ using UnityEngine;
 public class player_controller : MonoBehaviour
 {
     public Animator anim;
+    public Animator Dooranim;
     private Rigidbody rb;
     public LayerMask layerMask;
     public bool grounded;
+   
     /*
     void Awake()
     {
@@ -24,22 +26,37 @@ public class player_controller : MonoBehaviour
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 30;
     }
+    private void Update()
+    {
+        openDoor();
+    }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
+        float verticalAxis = Input.GetAxis("Vertical");
+        
         Grounded();
         Jump();
-        Move();
+        if (Input.GetButton("Sprint") && verticalAxis != 0)
+        { 
+            run();
+        }
+        else {
+            Move(); 
+        }
+            
         Boxe();
-        run();
+        
     }
     // jumping when clicking space
     private void Jump()
     {
-        if ((Input.GetButtonDown("Jump") && this.grounded)
-        {//loading jump animation
-            this.anim.SetBool("jump",false);
+        bool s = this.anim.GetBool("run");
+        if ((Input.GetButtonDown("Jump") && this.grounded && !s))
+        {
+            //loading jump animation
+            this.anim.SetBool("jump", false);
 
             this.rb.AddForce(Vector3.up * 4f, ForceMode.Impulse);
 
@@ -57,14 +74,14 @@ public class player_controller : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && this.grounded)
         {
-            this.anim.SetBool("boxe",false);
+            this.anim.SetBool("boxe", false);
             StartCoroutine(waitforAnimation());
-           
+
 
         }
 
     }
-    
+
     private void Grounded()
     {
         if (Physics.CheckSphere(this.transform.position + Vector3.down, 0.2f, layerMask))
@@ -82,6 +99,7 @@ public class player_controller : MonoBehaviour
     //movment function
     private void Move()
     {
+        this.anim.SetBool("run", false);
         float verticalAxis = Input.GetAxis("Vertical");
         float horizontalAxis = Input.GetAxis("Horizontal");
 
@@ -96,15 +114,46 @@ public class player_controller : MonoBehaviour
     private void run()
     {
 
-        float verticalAxis = Input.GetAxis("Vertical");
 
-        if (Input.GetButtonDown("Sprint") && verticalAxis != 0)
-        {
-         
-          
-            this.anim.SetTrigger("run");
+
+
+        float verticalAxis = Input.GetAxis("Vertical");
+        float horizontalAxis = Input.GetAxis("Horizontal");
+
+        Vector3 movement = this.transform.forward * verticalAxis + this.transform.right * horizontalAxis;
+        movement.Normalize();
+        this.transform.Translate(Vector3.forward*3*Time.fixedDeltaTime);
+        this.anim.SetBool("run",true);
+        
+
+
+    }
+    //this function call the door animation to open
+    void openDoor()
+    {
+        bool b = this.Dooranim.GetBool("Dooropen");
+        if (Input.GetButtonDown("use"))
+         {
+            if (b)
+            {
+                this.Dooranim.SetBool("Dooropen", false);
+                
+            }
+            else
+            {
+
+                this.Dooranim.SetBool("Dooropen", true);
+            }
+
+            
+
         }
-   
+
+        
+    }
+    //this function callls the door to be closed
+    void closeDoor()
+    {
 
     }
 }
