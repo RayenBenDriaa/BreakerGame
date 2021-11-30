@@ -25,6 +25,7 @@ public class EnemeyFollow : MonoBehaviour
        if(enemy.remainingDistance < 1)
         {
             Debug.Log("we are close i can attack");
+            //loading attack animation
             this.anim.SetTrigger("Attack");
         }
     }
