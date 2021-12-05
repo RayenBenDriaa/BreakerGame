@@ -9,7 +9,8 @@ public class player_controller : MonoBehaviour
     public Animator Dooranim;
     private Rigidbody rb;
     public LayerMask layerMask;
-    public bool grounded;
+    public bool grounded,tr;
+    
    
     /*
     void Awake()
@@ -28,7 +29,7 @@ public class player_controller : MonoBehaviour
     }
     private void Update()
     {
-        openDoor();
+        
     }
 
     // Update is called once per frame
@@ -129,11 +130,10 @@ public class player_controller : MonoBehaviour
 
     }
     //this function call the door animation to open
-    void openDoor()
+    public void openDoor()
     {
         bool b = this.Dooranim.GetBool("Dooropen");
-        if (Input.GetButtonDown("use"))
-         {
+      
             if (b)
             {
                 this.Dooranim.SetBool("Dooropen", false);
@@ -147,7 +147,7 @@ public class player_controller : MonoBehaviour
 
             
 
-        }
+        
 
         
     }
