@@ -1501,6 +1501,7 @@ MonoBehaviour:
     m_Bits: 256
   grounded: 0
   tr: 0
+  healthbar: {fileID: 0}
 --- !u!136 &1269419365
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3219,6 +3220,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3295747685980618184, guid: ff1ebf25e2620b24d94cda75c7d69f6e, type: 3}
+      propertyPath: interactKey
+      value: 101
+      objectReference: {fileID: 0}
+    - target: {fileID: 3295747685980618184, guid: ff1ebf25e2620b24d94cda75c7d69f6e, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -3229,22 +3234,22 @@ PrefabInstance:
     - target: {fileID: 3295747685980618184, guid: ff1ebf25e2620b24d94cda75c7d69f6e, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1519513324}
+      objectReference: {fileID: 1269419364}
     - target: {fileID: 3295747685980618184, guid: ff1ebf25e2620b24d94cda75c7d69f6e, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3295747685980618184, guid: ff1ebf25e2620b24d94cda75c7d69f6e, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: useLaptop
       objectReference: {fileID: 0}
     - target: {fileID: 3295747685980618184, guid: ff1ebf25e2620b24d94cda75c7d69f6e, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: 
+      value: player_controller, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3295747685980618184, guid: ff1ebf25e2620b24d94cda75c7d69f6e, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: 
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8249258244582423596, guid: ff1ebf25e2620b24d94cda75c7d69f6e, type: 3}
       propertyPath: m_Name

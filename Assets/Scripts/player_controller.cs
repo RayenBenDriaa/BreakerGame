@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class player_controller : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class player_controller : MonoBehaviour
     private Rigidbody rb;
     public LayerMask layerMask;
     public bool grounded,tr;
+    public GameManger healthbar;
+    int maxHealth=100;
+    int currentHealth;
     
    
     /*
@@ -25,12 +29,17 @@ public class player_controller : MonoBehaviour
     {
         this.rb = GetComponent<Rigidbody>();
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 30;
+        Application.targetFrameRate = 60;
+        currentHealth = maxHealth;
+        healthbar.SetMaxhealth(maxHealth);
+
     }
     private void Update()
     {
         
     }
+    
+
 
     // Update is called once per frame
     private void FixedUpdate()
@@ -64,6 +73,11 @@ public class player_controller : MonoBehaviour
         }
 
     }
+    void givedamage(int dmg)
+    {
+        currentHealth -= dmg;
+        healthbar.Sethealth(currentHealth);
+    }
 
     IEnumerator waitforAnimation()
     {
@@ -77,6 +91,7 @@ public class player_controller : MonoBehaviour
         {
             this.anim.SetBool("boxe", false);
             StartCoroutine(waitforAnimation());
+            givedamage(20);
 
 
         }
@@ -144,16 +159,16 @@ public class player_controller : MonoBehaviour
 
                 this.Dooranim.SetBool("Dooropen", true);
             }
+     }
 
-            
 
-        
 
-        
-    }
-    //this function callls the door to be closed
-    void closeDoor()
+
+    //this function for using the laptop
+    public void useLaptop()
     {
+        SceneManager.LoadScene("cine2");
+
 
     }
 }
