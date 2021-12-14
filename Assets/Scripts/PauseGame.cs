@@ -20,14 +20,16 @@ public class PauseGame : MonoBehaviour
     private void pauseGame()
     {
         Debug.Log("i cilicked on pause ");
+        //shows the pause menu
         Canvasimg.SetActive(true);
+        //stop the time scale 
         Time.timeScale = 0;
         isPaused = true;
 
     }
     public void resumeGame()
     {
-       
+       //resume the time scale
         Time.timeScale = 1;
         isPaused = false;
      

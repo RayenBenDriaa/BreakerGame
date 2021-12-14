@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class player_controller : MonoBehaviour
 {
@@ -10,12 +12,17 @@ public class player_controller : MonoBehaviour
     public Animator Dooranim;
     private Rigidbody rb;
     public LayerMask layerMask;
+    public GameObject Healthpotion;
+    public GameObject Manapotion;
     public bool grounded,tr;
     public GameManger healthbar;
     int maxHealth=100;
     int currentHealth;
-    
-   
+    GameObject obj;
+    private Text tooltiptext;
+    public GameObject Explosion;
+
+
     /*
     void Awake()
     {
@@ -34,9 +41,17 @@ public class player_controller : MonoBehaviour
         healthbar.SetMaxhealth(maxHealth);
 
     }
-    private void Update()
+     private void Update()
     {
-        
+       
+        if (currentHealth <= 0)
+        {
+            obj = GameObject.Find("walking");
+            Debug.Log("i killed the monster");
+            Destroy(obj);
+            StartCoroutine(waitforDestroy());
+        }
+
     }
     
 
@@ -57,7 +72,8 @@ public class player_controller : MonoBehaviour
         }
             
         Boxe();
-        
+        Spell();
+
     }
     // jumping when clicking space
     private void Jump()
@@ -91,12 +107,41 @@ public class player_controller : MonoBehaviour
         {
             this.anim.SetBool("boxe", false);
             StartCoroutine(waitforAnimation());
-            givedamage(20);
+            givedamage(10);
+
 
 
         }
 
     }
+    IEnumerator waitforAnimation3()
+    {
+        yield return new WaitForSeconds(1.7f);
+        this.anim.SetBool("spell", true);
+        Explosion.SetActive(false);
+
+    }
+    IEnumerator waitforDestroy()
+    {
+        yield return new WaitForSeconds(1.7f);
+        SceneManager.LoadScene("level2Scene");
+
+    }
+    //spell function
+    private void Spell()
+    {
+        if (Input.GetButtonDown("spell") && this.grounded)
+        {
+            Debug.Log("hola");
+            this.anim.SetBool("spell", false);
+            Explosion.SetActive(true);
+            StartCoroutine(waitforAnimation3());
+            givedamage(30);
+
+        }
+
+    }
+
 
     private void Grounded()
     {
@@ -171,4 +216,31 @@ public class player_controller : MonoBehaviour
 
 
     }
+    
+    /// <summary>
+    /// this function is used when the player picks up the object
+    /// </summary>
+    public void pickBat()
+    {
+        obj = GameObject.Find("Bottle_Health");
+        Destroy(obj);
+        Healthpotion.SetActive(true);
+
+    }
+    public void pickSpell()
+    {
+        obj = GameObject.Find("Bottle_Mana");
+        Destroy(obj);
+        Manapotion.SetActive(true);
+
+
+    }
+
+
+    private void showToolTip(string textvar)
+    {
+        
+
+    }
+
 }

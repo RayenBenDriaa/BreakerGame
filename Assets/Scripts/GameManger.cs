@@ -24,18 +24,23 @@ public class GameManger : MonoBehaviour
     }
 
     // Update is called once per frame
+
     void Update()
     {
         //decremating our current time each second
         currentTime -= 1 * Time.deltaTime;
-        Debug.Log(currentTime);
+       // Debug.Log(currentTime);
         //getting time in minute 
-        minuteTime = (int)currentTime / 60;
-        Debug.Log(minuteTime);
+        minuteTime = (int)currentTime ;
+       // Debug.Log(minuteTime);
         //displaying our time in minute in our text
         countdownText.text = minuteTime.ToString();
     }
     //this function  is resting the max health on demande
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="health"></param>
     public void SetMaxhealth(float health)
     {
         slider.maxValue = health;

@@ -9,8 +9,11 @@ public class EnemeyFollow : MonoBehaviour
     public NavMeshAgent enemy;
     public Transform Player;
     public Animator anim;
+    //getting the healthbar from gamamanger class
     public GameManger healthbar;
+    
     float maxHealth = 100;
+   
     float currentHealth;
     // Start is called before the first frame update
     void Start()
@@ -30,13 +33,20 @@ public class EnemeyFollow : MonoBehaviour
         //Finds the postion of the target player ands sets it to Enemy as a destination
         enemy.SetDestination(Player.position);
         
+        
        //if the distance bettwen the enemey and the player is closer than 1 meters 
        if(enemy.remainingDistance < 0.8)
         {
             Debug.Log("Doing Damage");
             this.anim.SetTrigger("Attack");
+            //Calling the give damage function
             givedamage(0.5f);
 
+        }
+
+        if (currentHealth <= 0)
+        {
+            //TODO
         }
     }
 
