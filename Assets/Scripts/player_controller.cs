@@ -9,6 +9,8 @@ public class player_controller : MonoBehaviour
     private Rigidbody rb;
     public LayerMask layerMask;
     public bool grounded;
+    public GameObject Explosion;
+
     /*
     void Awake()
     {
@@ -32,12 +34,13 @@ public class player_controller : MonoBehaviour
         Jump();
         Move();
         Boxe();
+        Spell();
         run();
     }
     // jumping when clicking space
     private void Jump()
     {
-        if ((Input.GetButtonDown("Jump") && this.grounded)
+        if (Input.GetButtonDown("Jump") && this.grounded)
         {//loading jump animation
             this.anim.SetBool("jump",false);
 
@@ -64,7 +67,28 @@ public class player_controller : MonoBehaviour
         }
 
     }
-    
+    IEnumerator waitforAnimation2()
+    {
+        yield return new WaitForSeconds(1.7f);
+        this.anim.SetBool("spell", true);
+        Explosion.SetActive(false);
+
+    }
+    //spell function
+    private void Spell()
+    {
+        if (Input.GetButtonDown("spell") && this.grounded)
+        {
+            Debug.Log("hola");
+            this.anim.SetBool("spell", false);
+            Explosion.SetActive(true);
+            StartCoroutine(waitforAnimation2());
+
+
+        }
+
+    }
+
     private void Grounded()
     {
         if (Physics.CheckSphere(this.transform.position + Vector3.down, 0.2f, layerMask))
