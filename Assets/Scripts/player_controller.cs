@@ -216,7 +216,17 @@ public class player_controller : MonoBehaviour
 
 
     }
-    
+
+
+    /// <summary>
+    /// this function is used when a player 
+    /// </summary>
+    public void useArcade()
+    {
+        SceneManager.LoadScene("cine3");
+    }
+
+
     /// <summary>
     /// this function is used when the player picks up the object
     /// </summary>

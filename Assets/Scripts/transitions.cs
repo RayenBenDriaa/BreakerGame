@@ -28,7 +28,12 @@ public class transitions : MonoBehaviour
             else if (level == 2)
             {
                 SceneManager.LoadScene("Level1Scene");
+            }else 
+            if (level == 3)
+            {
+                SceneManager.LoadScene("SlidingTilePuzzle");
             }
+
 
         }
         
