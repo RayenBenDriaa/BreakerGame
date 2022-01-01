@@ -8,6 +8,7 @@ public class transitions : MonoBehaviour
 
 
     public int level;
+    public bool haskey;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,9 +34,19 @@ public class transitions : MonoBehaviour
             {
                 SceneManager.LoadScene("SlidingTilePuzzle");
             }
+            if (level == 4)
+            {
+                SceneManager.LoadScene("FinalScene");
+            }
 
 
         }
+        if (Input.GetButtonDown("Cancel"))
+        {
+            SceneManager.LoadScene("Level4Scene");
+            haskey = true;
+        }
         
     }
+
 }

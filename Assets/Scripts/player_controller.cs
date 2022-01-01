@@ -124,7 +124,7 @@ public class player_controller : MonoBehaviour
     IEnumerator waitforDestroy()
     {
         yield return new WaitForSeconds(1.7f);
-        SceneManager.LoadScene("level2Scene");
+        SceneManager.LoadScene("cine4");
 
     }
     //spell function
