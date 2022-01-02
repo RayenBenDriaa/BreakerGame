@@ -29,9 +29,13 @@ public class GameManger : MonoBehaviour
     {
         //decremating our current time each second
         currentTime -= 1 * Time.deltaTime;
+        if (currentTime < 0)
+        {
+            currentTime = 0;
+        }
        // Debug.Log(currentTime);
-        //getting time in minute 
-        minuteTime = (int)currentTime ;
+       //getting time in minute 
+            minuteTime = (int)currentTime ;
        // Debug.Log(minuteTime);
         //displaying our time in minute in our text
         countdownText.text = minuteTime.ToString();

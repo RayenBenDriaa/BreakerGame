@@ -116,7 +116,7 @@ public class player_controller : MonoBehaviour
     }
     IEnumerator waitforAnimation3()
     {
-        yield return new WaitForSeconds(1.7f);
+        yield return new WaitForSeconds(1f);
         this.anim.SetBool("spell", true);
         Explosion.SetActive(false);
 
@@ -204,8 +204,16 @@ public class player_controller : MonoBehaviour
 
                 this.Dooranim.SetBool("Dooropen", true);
             }
-     }
 
+        StartCoroutine(waitforwin());
+
+
+    }
+    IEnumerator waitforwin()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("Cine5");
+    }
 
 
 

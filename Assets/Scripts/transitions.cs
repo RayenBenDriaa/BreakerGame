@@ -38,6 +38,10 @@ public class transitions : MonoBehaviour
             {
                 SceneManager.LoadScene("FinalScene");
             }
+            if (level == 6)
+            {
+                SceneManager.LoadScene("MenuScene");
+            }
 
 
         }

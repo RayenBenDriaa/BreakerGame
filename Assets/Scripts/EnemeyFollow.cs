@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class EnemeyFollow : MonoBehaviour
 {
@@ -47,7 +48,14 @@ public class EnemeyFollow : MonoBehaviour
         if (currentHealth <= 0)
         {
             //TODO
+            StartCoroutine(waitforDeath());
+
         }
     }
+    IEnumerator waitforDeath() {
+        yield return new WaitForSeconds(1.7f);
+        SceneManager.LoadScene("Death");
+    }
+
 
 }
